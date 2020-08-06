@@ -1,0 +1,4 @@
+DEV_DB_USER:                 <%= `postgres`.chomp %>
+TEST_DB_USER:                <%= `postgres`.chomp %>
+TEST_DB_PASSWORD:            <%= `postgres`.chomp %>
+DEV_DB_PASSWORD:            <%= `postgres`.chomp %>
