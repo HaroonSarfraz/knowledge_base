@@ -1,31 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Sub category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.sub_category %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+<div class="article">
+  <div class="menu-bar">
+    <div class="list-container categories">
+      <div class="heading">Categories</div>
+      <% @categories.each do |category| %>
+        <%= render partial: 'category', locals: { category: category, active: category == @article.sub_category.category }%>
+      <% end %>
+    </div>
+    <div class="list-container sub-categories">
+      <div class="heading">Sub Categories</div>
+      <% @sub_categories.each do |sub_category| %>
+        <%= render partial: 'sub_category', locals: { sub_category: sub_category, active: sub_category == @article.sub_category }%>
+      <% end %>
+    </div>
+    <div class="list-container articles-list">
+      <div class="heading">Articles</div>
+      <% @articles.each do |article| %>
+        <%= render partial: 'article', locals: { article: article, active: article == @article }%>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @sub_category.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @sub_category.category %>
-</p>
-
-<%= link_to 'Edit', edit_sub_category_path(@sub_category) %> |
-<%= link_to 'Back', sub_categories_path %>
+<div class="article">
+  <div class="menu-bar">
+    <div class="list-container categories">
+      <div class="heading">Categories</div>
+      <% @categories.each do |category| %>
+        <%= render partial: 'articles/category', locals: { category: category, active: category == @sub_category.category }%>
+      <% end %>
+    </div>
+    <div class="list-container sub-categories">
+      <div class="heading">Sub Categories</div>
+      <% @sub_categories.each do |sub_category| %>
+        <%= render partial: 'articles/sub_category', locals: { sub_category: sub_category, active: sub_category == @sub_category }%>
+      <% end %>
+    </div>
+    <div class="list-container articles-list">
+      <div class="heading">Articles</div>
+      <% @articles.each do |article| %>
+        <%= render partial: 'articles/article', locals: { article: article, active: false }%>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -17,12 +17,12 @@
   </div>
 
   <div class="field">
-    <%= form.cktext_area :content %>
+    <%= form.label :sub_category_id %>
+    <%= form.select :sub_category_id, @sub_categories %>
   </div>
 
   <div class="field">
-    <%= form.label :sub_category_id %>
-    <%= form.text_field :sub_category_id %>
+    <%= form.cktext_area :content %>
   </div>
 
   <div class="actions">

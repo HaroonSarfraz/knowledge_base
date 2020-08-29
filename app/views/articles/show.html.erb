@@ -1,19 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<p>
-  <strong>Sub category:</strong>
-  <%= @article.sub_category %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="article">
+  <div class="menu-bar">
+    <div class="list-container categories">
+      <div class="heading">Categories</div>
+      <% @categories.each do |category| %>
+        <%= render partial: 'category', locals: { category: category, active: category == @article.sub_category.category }%>
+      <% end %>
+    </div>
+    <div class="list-container sub-categories">
+      <div class="heading">Sub Categories</div>
+      <% @sub_categories.each do |sub_category| %>
+        <%= render partial: 'sub_category', locals: { sub_category: sub_category, active: sub_category == @article.sub_category }%>
+      <% end %>
+    </div>
+    <div class="list-container articles-list">
+      <div class="heading">Articles</div>
+      <% @articles.each do |article| %>
+        <%= render partial: 'article', locals: { article: article, active: article == @article }%>
+      <% end %>
+    </div>
+  </div>
+  <div class="article-container">
+    <div class="heading-container">
+      <div class="heading"><%= @article.title %></div>
+      <hr/>
+      <div class="date"><%= @article.updated_at.strftime("%A, %e %B %Y")%></div>
+      <div class="time"><%= @article.updated_at.strftime("%I:%M %p")%></div>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+      <%= link_to 'New', new_article_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="content">
+      <%= @article.content.html_safe %>
+    </div>
+  </div>
+</div>

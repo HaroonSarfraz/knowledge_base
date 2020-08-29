@@ -1,5 +1,8 @@
 class SubCategoriesController < ApplicationController
   before_action :set_sub_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:show]
+  before_action :set_articles, only: [:show]
+  before_action :set_sub_categories, only: [:show]
 
   # GET /sub_categories
   # GET /sub_categories.json
@@ -71,4 +74,16 @@ class SubCategoriesController < ApplicationController
     def sub_category_params
       params.require(:sub_category).permit(:name, :category_id)
     end
-end
+
+    def set_categories
+      @categories = Category.all
+    end
+
+    def set_sub_categories
+      @sub_categories = SubCategory.where(category: @sub_category.category)
+    end
+
+    def set_articles
+      @articles = Article.where(sub_category: @sub_category)
+    end
+  end

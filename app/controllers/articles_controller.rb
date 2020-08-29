@@ -1,28 +1,25 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:show]
+  before_action :set_sub_categories, only: [:show]
+  before_action :set_articles, only: [:show]
+  before_action :set_sub_categories_options, only: [:edit, :new]
 
-  # GET /articles
-  # GET /articles.json
   def index
-    @articles = Article.all
+    redirect_to categories_path
+    return
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
   def show
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit
   end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.new(article_params)
 
@@ -37,8 +34,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
       if @article.update(article_params)
@@ -51,8 +46,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article.destroy
     respond_to do |format|
@@ -62,13 +55,27 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :content, :sub_category_id)
+    end
+
+    def set_categories
+      @categories = Category.all
+    end
+
+    def set_sub_categories
+      @sub_categories = SubCategory.where(category: @article.sub_category.category)
+    end
+
+    def set_articles
+      @articles = Article.where(sub_category: @article.sub_category)
+    end
+
+    def set_sub_categories_options
+      @sub_categories = SubCategory.includes(:category).all.map{ |sub_cat| ["#{sub_cat.category.name} | #{ sub_cat.name}", sub_cat.id] }
     end
 end

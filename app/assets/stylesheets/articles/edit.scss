@@ -1,0 +1,26 @@
+.edit-article {
+  background-color: rgb(26, 26, 26);
+  overflow: hidden;
+  color: white;
+  padding: 20px 0 10px 10px;
+
+  .heading {
+    font-size: 26px;
+    padding: 10px 0 30px 0;
+  }
+
+  .field {
+    padding-bottom: 10px;
+    width: 100%;
+    display: inline-block;
+
+    label {
+      float: left;
+    }
+
+    input, select {
+      float: left;
+      margin-left: 20px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<%= link_to article do %>
+  <div class="list-item article <%= active ? 'active' : '' %>">
+    <%= article.title.present? ? article.title : 'N/A' %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<div class="article">
+  <div class="menu-bar">
+    <div class="list-container categories">
+      <div class="heading">Categories</div>
+      <% @categories.each do |category| %>
+        <%= render partial: 'articles/category', locals: { category: category, active: false }%>
+      <% end %>
+    </div>
+  </div>
+</div>
