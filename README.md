@@ -1,24 +1,19 @@
-# README
+# Knowledge Base
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Knowledge Base is a complete setup to create and manage articles.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+* Install imagemagick
 
-* System dependencies
+* Ruby version `2.6.3`
 
-* Configuration
+* Rails version `5.2.3`
 
-* Database creation
+* Run `bundle install`
 
-* Database initialization
+* Set database credentials in your `application.yml`
 
-* How to run the test suite
+* Run `rake db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run `Rails s`
