@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'ckeditor'
 gem "image_magick"
 gem "mini_magick"
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'figaro'
 
 gem "mimemagic", '0.3.9'
 

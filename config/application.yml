@@ -2,3 +2,9 @@ DEV_DB_USER:                 <%= `postgres`.chomp %>
 TEST_DB_USER:                <%= `postgres`.chomp %>
 TEST_DB_PASSWORD:            <%= `postgres`.chomp %>
 DEV_DB_PASSWORD:            <%= `postgres`.chomp %>
+
+
+AWS_ACCESS_KEY: AKIATQUM7J52BUYLDS6P
+AWS_SECRET_KEY: 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
+AWS_REGION: eu-west-2
+AWS_BUCKET_NAME: createy-staging
